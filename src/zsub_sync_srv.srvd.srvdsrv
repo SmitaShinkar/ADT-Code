@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Defination for Subcon sync'
+define service ZSUB_SYNC_SRV {
+  expose ZC_SUB_SYNC;
+}

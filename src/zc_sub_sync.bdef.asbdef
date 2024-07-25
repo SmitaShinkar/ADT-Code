@@ -1,0 +1,8 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_SUB_SYNC //alias <alias_name>
+{
+
+  use action post;
+}

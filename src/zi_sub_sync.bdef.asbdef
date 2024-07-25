@@ -1,0 +1,15 @@
+unmanaged implementation in class zbp_i_sub_sync unique;
+strict ( 2 );
+
+define behavior for ZI_SUB_SYNC //alias <alias_name>
+//late numbering
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  //create;
+  //update;
+  //delete;
+  action ( features : instance ) post result [1] $self;
+  field ( readonly ) MaterialDocument, MaterialDocumentYear;
+}

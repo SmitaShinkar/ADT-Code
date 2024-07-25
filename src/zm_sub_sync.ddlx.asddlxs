@@ -1,0 +1,173 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo: { typeName: 'Subcon Challan' ,
+                  typeNamePlural: 'Subcon Challans',
+                  title: { type: #STANDARD }
+                 }
+                 
+annotate entity ZC_SUB_SYNC
+    with 
+{
+   @UI: {
+        lineItem:       [ { position: 10, importance: #HIGH} ]}
+  @UI: {lineItem:       [ { type: #FOR_ACTION,dataAction: 'post',label:'Sync Data', 
+                            invocationGrouping: #CHANGE_SET} ] }                   
+  @Consumption.filter.selectionType: #SINGLE
+  @Consumption.derivation.lookupEntity: 'I_MaterialDocumentHeader_2'
+  @Consumption.derivation.resultElement: 'InventoryTransactionType'
+  @Consumption.derivation.binding: [{ targetElement: 'InventoryTransactionType', type:#ELEMENT, value:'WE'}]                       
+  @Consumption.valueHelpDefinition: [{ entity:{ element: 'MaterialDocument', name: 'I_MaterialDocumentHeader_2' } }]
+  @UI.selectionField: [{ position: 10 }]      
+  @EndUserText.label: 'Material Doc'
+  MaterialDocument;
+
+  @UI: {
+     lineItem:       [ { position: 20, importance: #HIGH} ]}
+  @EndUserText.label: 'Year'
+  MaterialDocumentYear;
+
+  @UI: {
+     lineItem:       [ { position: 30, importance: #LOW} ]}
+  @EndUserText.label: 'Item'
+  MaterialDocumentItem;
+
+  @UI: {
+     lineItem:       [ { position: 40, importance: #LOW} ]}
+  @EndUserText.label: 'Mvt Typ'
+  GoodsMovementType;
+
+  @UI: {
+     lineItem:       [ { position: 50, importance: #LOW} ]}
+  @EndUserText.label: 'Material'
+  Material;
+
+  @UI: {
+     lineItem:       [ { position: 60, importance: #LOW} ]}
+  @EndUserText.label: 'Header Text'
+  MaterialDocumentHeaderText;
+
+  @UI: {
+   lineItem:       [ { position: 70, importance: #LOW} ]}
+  @EndUserText.label: 'Plant'
+  Plant;
+
+  @UI: {
+     lineItem:       [ { position: 80, importance: #LOW} ]}
+  @EndUserText.label: 'Storage Loc'
+  StorageLocation;
+
+  @UI: {
+    lineItem:       [ { position: 90, importance: #LOW} ]}
+  @EndUserText.label: 'Batch'
+  Batch;
+
+  @UI: {
+     lineItem:       [ { position: 100, importance: #LOW} ]}
+  @EndUserText.label: 'Stk type'
+  InventoryStockType;
+
+  @UI: {
+     lineItem:       [ { position: 110, importance: #LOW} ]}
+  @EndUserText.label: 'Sp stk typ'
+  InventorySpecialStockType;
+
+  @UI: {
+     lineItem:       [ { position: 120, importance: #LOW} ]}
+  @Consumption.valueHelpDefinition: [{ entity:{ element: 'Supplier', name: 'I_MaterialDocumentItem_2' } }]
+  @UI.selectionField: [{ position: 30 }]          
+  @EndUserText.label: 'Supplier'
+  Supplier;
+
+  @UI: {
+     lineItem:       [ { position: 130, importance: #LOW} ]}
+  @EndUserText.label: 'Customer'
+  Customer;
+
+  @UI: {
+     lineItem:       [ { position: 140, importance: #LOW} ]}
+  @EndUserText.label: 'Curr'
+  CompanyCodeCurrency;
+
+  @UI: {
+      lineItem:       [ { position: 150, importance: #LOW} ]}
+  @EndUserText.label: 'Amount'
+  TotalGoodsMvtAmtInCCCrcy;
+
+  @UI: {
+      lineItem:       [ { position: 160, importance: #LOW} ]}
+  @EndUserText.label: 'UoM'
+  MaterialBaseUnit;
+
+  @UI: {
+     lineItem:       [ { position: 170, importance: #LOW} ]}
+  @EndUserText.label: 'Quantity'
+  QuantityInBaseUnit;
+
+  @UI: {
+      lineItem:       [ { position: 180, importance: #LOW} ]}
+  @EndUserText.label: 'UoM'
+  EntryUnit;
+
+  @UI: {
+      lineItem:       [ { position: 190, importance: #LOW} ]}
+  @EndUserText.label: 'Quantity EU'
+  QuantityInEntryUnit;
+
+  @UI: {
+      lineItem:       [ { position: 200, importance: #LOW} ]}
+  
+  @Consumption.valueHelpDefinition: [{ entity:{ element: 'PurchaseOrder', name: 'I_MaterialDocumentHeader_2' } }]
+  @UI.selectionField: [{ position: 20 }]  
+  @EndUserText.label: 'PO'
+  PurchaseOrder;
+
+  @UI: {
+      lineItem:       [ { position: 210, importance: #LOW} ]}
+  @EndUserText.label: 'PO Item'
+  PurchaseOrderItem;
+
+  @UI: {
+      lineItem:       [ { position: 220, importance: #LOW} ]}
+  @EndUserText.label: 'Del Note'
+  ReferenceDocument;
+
+  @UI: {
+      lineItem:       [ { position: 230, importance: #LOW} ]}
+  @UI.selectionField: [{ position: 20 }]
+  @Consumption.filter.selectionType: #RANGE
+  @Consumption.derivation.lookupEntity: 'ZI_GR_SYNC'
+  @Consumption.derivation.resultElement: 'PostingDate'
+  @Consumption.derivation.binding: [{ targetElement: 'PostingDate', type:#ELEMENT, value:' '}]    
+  @EndUserText.label: 'Posting Date'
+  PostingDate;
+
+  @UI: {
+      lineItem:       [ { position: 240, importance: #LOW} ]}
+  @EndUserText.label: 'Created by'
+  CreatedByUser;
+
+  @UI: {
+      lineItem:       [ { position: 250, importance: #LOW} ]}
+  @EndUserText.label: 'Creation date'
+  CreationDate;
+  
+  @UI: {
+      lineItem:       [ { position: 260, importance: #LOW} ]}
+  @EndUserText.label: 'Challan No'
+  BillingDocument;
+  
+  @UI: {
+      lineItem:       [ { position: 270, importance: #LOW} ]}
+  @EndUserText.label: 'Chln Item'
+    BillingDocumentItem;
+    
+  @UI: {
+      lineItem:       [ { position: 280, importance: #LOW} ]}
+  @EndUserText.label: 'UoM'   
+   BillingQuantityUnit;
+    
+  @UI: {
+      lineItem:       [ { position: 290, importance: #LOW} ]}
+  @EndUserText.label: 'Qty'  
+    BillingQuantity;
+    
+}
